@@ -3,6 +3,7 @@
   The repository is OwnCloud docker images built.
 
 # Feature
+  - OwnCloud
   - Apache 2.4
   - php 5.6
 

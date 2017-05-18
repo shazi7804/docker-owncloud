@@ -1,23 +1,25 @@
 sudo: required
 services:
-  - docker
+- docker
 env:
   global:
-    - REPO: shazi7804/owncloud
+  - REPO: shazi7804/owncloud
   matrix:
-    - VERSION=9.1
+  - VERSION=9.1
 install:
-  - git clone https://github.com/docker-library/official-images.git ~/official-images
+- git clone https://github.com/docker-library/official-images.git ~/official-images
 before_script:
-  - env | sort
-  - cd "$VERSION"
-  - image="owncloud:${VERSION}"
+- env | sort
+- cd "$VERSION"
+- image="owncloud:${VERSION}"
 script:
-  - travis_retry docker build -t "$image"
-  - ~/official-images/test/run.sh "$image"
+- travis_retry docker build -t "$image"
+- ~/official-images/test/run.sh "$image"
 after_script:
-  - docker images
+- docker images
 notifications:
   email: false
   slack:
     secure: 5mgrA3hInrn3CGdvg1HuItcL27niO4dWswLMZ/1x2fYUea1Z8OyweAuL8mKeuepLUVsvLbll3fXePE477OXJ9TNdxq28bVmv5FaN51Hhdx0WEEcoHlbWeFbG7SRk0ejMb+D3gohIIOGZFzyhFi4s0pG6+IkhEIZCOO9jZa5ZuKZ0arY99jIkXTo9bVi41RNX40cIMfjv0NhrQoMlzxcSRVGRNBx/tWDthaTK/lAnvlIkb2vbQHinUcrvDv6fC5btQ2Uchx/ZLDvFi6s6BZpB+YNzjeq6qyNYqLAUaRvRcBBZkT30nb6ise7xtiFgOvQL4fcVRYVQO2m2GID33mtJ334VP1Og8XgCOslg8vgo1Un32M0mP3Ot7ymuZQlEpn/W2NbXbjMVruZCmeTVzCS7P40jG8CkCbnKl+IMDt70qyqsp2AaQVlpJc8Apz/nFQHXmVSBraCCLiqON1beC6G38N+md8jMaQsyu98SNPiN3HU97WO3D9bqdKMlE0m7rO3G3TdM9E3DIHqNUK9YEMNUn469pWToiSMiWE+hugtR6vIXyrdZzVDuZimVwnOmtAVOEW6rdc9kGcxrgnDTvuervHBskNsF1T6GjLJNc1ZSkSGsXyZoNDlPvpa/QBCs0gfImLB8KT42aW3rb2WbJ+4ZqopAyVjB+Zqiy0ugoPrnw40=
+    rooms:
+      secure: BKIwgedl7U/PgD0iB2Hm4wDnuzuJQrGLsL/Pvb88KXfW7b2zf69sQdTUHnx7LzlPd4FgIACF1VJcDrhSnSdC9Uk2LCOEskUH3Y8PuR71w+ZhtjK65zzhw6xo2zTeXDoiCmB1LpOwPV0/WoL5bsTAxtvXnm6VAWaTo9nBaXPUz4K9HZXltsZCaxUuinGOi39RW08ylkaxvSH0vKKwDps302RthlfGTzk9xhswkcN+kXGIffYFvXITals2eZ2I8EBG23iSg49zG8oQz4obCTFOELgAaJSQ3GUJcTWk4sfcvd9yIbL7+TWl8osslroEKEwro1ON8WseEkQBKMkSEZ2nMSKDt0tCQJeXxhMMA/1PNzEMkirPo4Lo5uB2WcmFKSUq2x43GDLT6hUNcaek4O4x8yKyiT5UDTnUAub/ZyYNkJPAiYsCFdw6F0u+ACT1+S9oJxPJCFG1CMbzhox8MMfQxASTpHKewX2YLhFEZBC9uJMY6DbIuN+qKDN1PnufcwL88DEJLpj5+3J9IT0fboPcFjFIIAXaF32dvf0WrPmduG1WiZN5mmGtFfgg6BxfKLRFY4PPPkIWDmdHMNrJpb8Q36xMAPJMpd7qkrE0KrJ/UyRkwlaEQBpMwyfCwIGhTR58kCV6Mp5wCoPtiw9bymocaVD+Avuz0yVGe/M1XeD+Ee4=
